@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+        }
+        .choices {
+            margin: 20px;
+        }
+        .choice {
+            font-size: 20px;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid white;
+            border-radius: 10px;
+            background-color: #444;
+        }
+        .choice:hover {
+            background-color: #666;
+        }
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <p>Choose your move:</p>
+    <div class="choices">
+        <button class="choice" onclick="playGame('rock')">Rock</button>
+        <button class="choice" onclick="playGame('paper')">Paper</button>
+        <button class="choice" onclick="playGame('scissors')">Scissors</button>
+    </div>
+    <p id="result"></p>
+    <script>
+        function playGame(playerChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const aiChoice = choices[Math.floor(Math.random() * 3)];
+            let result = '';
+
+            if (playerChoice === aiChoice) {
+                result = "It's a tie!";
+            } else if (
+                (playerChoice === 'rock' && aiChoice === 'scissors') ||
+                (playerChoice === 'paper' && aiChoice === 'rock') ||
+                (playerChoice === 'scissors' && aiChoice === 'paper')
+            ) {
+                result = "You win! 🎉";
+            } else {
+                result = "AI wins! 🤖";
+            }
+            
+            document.getElementById('result').innerHTML = `You chose: ${playerChoice} <br> AI chose: ${aiChoice} <br> <strong>${result}</strong>`;
+        }
+    </script>
+    <p>Made by Newt</p>
+</body>
+</html>
